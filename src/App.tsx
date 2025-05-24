@@ -1,4 +1,6 @@
 import Dock, {type DockItemData} from "./components/molecules/Dock.tsx";
+import SideQBtn from "./components/molecules/generateSideQBtn.tsx";
+//import sideQBtn from "./components/molecules/generateSideQBtn.tsx";
 import {VscAccount, VscHome, VscSettingsGear} from "react-icons/vsc";
 import TiltedCard from "./components/molecules/TiltedCard.tsx";
 import sidequestImage from "./assets/sidequest.png"
@@ -14,7 +16,9 @@ function App() {
 
 
   return (
-    <>
+    <>      
+
+        <div className="flex w-full items-center justify-around"><SideQBtn/></div>
       <div className="bg-dionysos-spring-bg p-8 min-h-screen">
         <div className="w-full">
             <div className="mx-auto w-fit mt-40 ">
@@ -44,12 +48,13 @@ function App() {
           color="cyan"
           speed="5s"
       >hi</StarBorder>
-        </div>
+
 
         <Dock   items={dockItems}
                 panelHeight={68}
                 baseItemSize={50}
                 magnification={70}/>
+      </div>
       </div>
     </>
   )
