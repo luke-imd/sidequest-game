@@ -1,6 +1,6 @@
 import Dock, {type DockItemData} from "./components/molecules/Dock.tsx";
 import SideQBtn from "./components/molecules/generateSideQBtn.tsx";
-import sideQBtn from "./components/molecules/generateSideQBtn.tsx";
+//import sideQBtn from "./components/molecules/generateSideQBtn.tsx";
 import {VscAccount, VscHome, VscSettingsGear} from "react-icons/vsc";
 import TiltedCard from "./components/molecules/TiltedCard.tsx";
 import sidequestImage from "./assets/sidequest.png"
@@ -54,6 +54,7 @@ function App() {
                 panelHeight={68}
                 baseItemSize={50}
                 magnification={70}/>
+      </div>
       </div>
     </>
   )
