@@ -1,4 +1,6 @@
 import Dock, {type DockItemData} from "./components/molecules/Dock.tsx";
+import SideQBtn from "./components/molecules/generateSideQBtn.tsx";
+import sideQBtn from "./components/molecules/generateSideQBtn.tsx";
 import {VscAccount, VscArchive, VscHome, VscSettingsGear} from "react-icons/vsc";
 
 const dockItems = [
@@ -13,8 +15,9 @@ function App() {
 
   return (
     <>
+      
       <div className="bg-black p-8 min-h-screen">
-
+        <div className="flex w-full items-center justify-around"><SideQBtn/></div>
 
         <Dock   items={dockItems}
                 panelHeight={68}
