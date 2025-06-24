@@ -1,0 +1,267 @@
+# Sidequest Community Mapping Application - Claude Context
+
+## Project Overview
+A community-focused web application centered around interactive maps, designed to help people discover their surroundings and connect with others through location-based features. The core philosophy emphasizes facilitating real-life meetups and human connections, motivated by community building rather than profit.
+
+## Technology Stack
+
+### Core Framework (Latest Versions)
+- **React**: ^19.1.0 (with concurrent features)
+- **TypeScript**: ~5.8.3 (strict configuration)
+- **Vite**: ^6.3.5 (build tool)
+- **React Router DOM**: ^7.6.0 (routing)
+
+### Styling & Animation
+- **Tailwind CSS**: ^3.4.17 (utility-first CSS)
+- **Framer Motion**: ^11.18.2 (animations)
+- **PostCSS**: ^8.5.3 with Autoprefixer
+
+### Development Tools
+- **ESLint**: ^9.25.0 (modern flat config)
+- **React Icons**: ^5.5.0 (VSCode icon set)
+- **@anthropic-ai/claude-code**: ^1.0.0
+
+## Project Structure & Architecture
+
+### Component Architecture (Atomic Design)
+```
+src/components/
+├── atoms/          # Basic UI elements (currently empty, planned)
+├── molecules/      # Composite functional components
+│   ├── Dock.tsx           # macOS-style interactive dock
+│   └── TiltedCard.tsx     # 3D interactive card with flip
+├── animations/     # Specialized animation components
+│   └── StarBorder.tsx     # Animated gradient border effect
+└── pages/         # Full page components
+    └── playground.tsx     # Component testing environment
+```
+
+### Current File Structure
+```
+sidequest-game/
+├── src/
+│   ├── main.tsx                  # App entry with Router setup
+│   ├── App.tsx                   # Clean welcome page
+│   ├── index.css                 # Tailwind directives only
+│   ├── assets/
+│   │   ├── sidequest.png        # Main app logo/image
+│   │   └── react.svg
+│   └── components/ [see above]
+├── Configuration Files
+│   ├── package.json              # Dependencies & scripts
+│   ├── vite.config.ts           # Minimal Vite setup
+│   ├── tailwind.config.js       # Custom Dionysos theme
+│   ├── tsconfig.json            # Project references
+│   ├── tsconfig.app.json        # App TypeScript config
+│   ├── eslint.config.js         # Modern ESLint flat config
+│   └── postcss.config.js        # Tailwind integration
+└── Documentation
+    ├── CLAUDE.md                # Project vision & context
+    └── .claude_context          # This file
+```
+
+## Design System & Theming
+
+### Custom Dionysos Color Theme
+```javascript
+// Current active theme: Spring (green/gold)
+dionysos: {
+  spring: {
+    bg: '#3E8543',      // Forest green background
+    main: '#FEBF3E',    // Golden yellow primary
+    light: '#FEDE8E'    // Light golden yellow
+  },
+  winter: {
+    bg: '#E3F3FF',      // Light blue background  
+    main: '#020C8C',    // Deep blue primary
+    grey: '#ccdbf3'     // Light grey-blue
+  },
+  purple: '#9333EA',    // Purple variants available
+  gold: '#f6c231'       # Gold variants available
+}
+```
+
+### Animation System
+- **Framer Motion**: Spring-based animations throughout
+- **Custom Keyframes**: Star movement animations for borders
+- **Performance Optimized**: Uses `will-change-transform`
+
+## Current Component Capabilities
+
+### 1. StarBorder (`/src/components/animations/StarBorder.tsx`)
+- Polymorphic animated border component
+- Customizable color and speed
+- Dual gradient animations (top/bottom)
+- Usage: `<StarBorder as="button" color="cyan" speed="5s">content</StarBorder>`
+
+### 2. Dock (`/src/components/molecules/Dock.tsx`)
+- macOS-style interactive dock with magnification
+- Mouse proximity detection
+- Tooltip labels and accessibility features
+- Configuration: `panelHeight`, `baseItemSize`, `magnification`
+
+### 3. TiltedCard (`/src/components/molecules/TiltedCard.tsx`)
+- 3D mouse-tracking tilt effects
+- Flip animation functionality
+- Configurable dimensions and behavior
+- Mobile responsive considerations
+
+## Development Workflow
+
+### Scripts
+```bash
+npm run dev        # Development server (Vite HMR)
+npm run build      # Type-check then build
+npm run lint       # ESLint code quality
+npm run preview    # Preview production build
+```
+
+### Development Environment
+- **Hot Module Replacement**: Instant updates via Vite
+- **Strict TypeScript**: Comprehensive type checking
+- **ESLint Integration**: Modern flat config with React rules
+- **Tailwind IntelliSense**: Full CSS utility suggestions
+
+## Application Features (Current State)
+
+### Implemented
+- Clean, minimal main page (`src/App.tsx`)
+- Component playground for testing (`src/components/pages/playground.tsx`)
+- Responsive design with custom theme
+- Smooth animations and interactions
+- Accessibility considerations
+
+### Architecture Patterns
+- **Atomic Design**: Clear component hierarchy
+- **TypeScript Strict Mode**: Full type safety
+- **Polymorphic Components**: Flexible component APIs
+- **Animation-First**: Framer Motion integration
+- **Utility-First CSS**: Tailwind with custom design system
+
+## Future Vision & Roadmap
+
+### Core Features (Planned)
+1. **Interactive Map System**
+   - Primary map interface
+   - Official city data integration (Vienna drinking fountains API)
+   - User-generated private map layers
+   - Marker/spot management system
+
+2. **Social Features**
+   - User accounts and following system
+   - Sidequests gamification
+   - Reddit-style voting and leaderboards
+   - Jodel-inspired local community features
+
+3. **Community Building**
+   - Real-life meetup facilitation
+   - Location-based social connections
+   - Community-driven content
+
+### Immediate Development Priorities
+1. **Map Integration**: Choose and implement mapping library (Leaflet/Mapbox)
+2. **Marker System**: Create marker components and data structure
+3. **State Management**: Implement global state solution
+4. **API Integration**: Set up backend communication layer
+
+## Technical Requirements for Next Phase
+
+### Dependencies to Add
+```json
+{
+  "leaflet": "^1.9.4",           // Map functionality
+  "react-leaflet": "^4.2.1",    // React integration
+  "@types/leaflet": "^1.9.8",   // TypeScript support
+  "zustand": "^4.4.7"           // State management
+}
+```
+
+### Component Architecture Expansion
+```
+src/components/
+├── atoms/
+│   ├── Button.tsx
+│   ├── Input.tsx
+│   ├── Badge.tsx
+│   └── Avatar.tsx
+├── molecules/
+│   ├── MapMarker.tsx
+│   ├── MarkerList.tsx
+│   ├── UserProfile.tsx
+│   └── [existing components]
+├── organisms/
+│   ├── MapView.tsx
+│   ├── Sidebar.tsx
+│   └── Navigation.tsx
+└── pages/
+    ├── Map.tsx
+    ├── Profile.tsx
+    └── [existing pages]
+```
+
+## API Integration Requirements
+
+### Vienna City API
+- Drinking fountain locations
+- Public infrastructure data
+- Real-time availability information
+
+### User-Generated Content
+- Marker creation and management
+- User account system
+- Social features (following, voting)
+- Content moderation
+
+## Development Patterns & Conventions
+
+### Code Style
+- **No comments**: Clean, self-documenting code preferred
+- **Functional Components**: React hooks pattern
+- **TypeScript First**: Strong typing throughout
+- **Tailwind Utilities**: Utility-first styling approach
+
+### File Naming
+- **PascalCase**: Component files (e.g., `TiltedCard.tsx`)
+- **camelCase**: Utility files and hooks
+- **kebab-case**: Asset files and routes
+
+### Import Patterns
+```typescript
+// External libraries first
+import React from 'react';
+import { motion } from 'framer-motion';
+
+// Internal components
+import Button from './atoms/Button';
+import MapView from './organisms/MapView';
+
+// Assets last
+import logo from '../assets/logo.png';
+```
+
+## Testing Strategy (To Implement)
+- **Unit Tests**: Jest/Vitest for component logic
+- **Integration Tests**: React Testing Library for user interactions
+- **E2E Tests**: Playwright for full application flows
+- **Visual Regression**: Chromatic for component library
+
+## Performance Considerations
+- **Code Splitting**: Route-based splitting ready
+- **Image Optimization**: Vite asset handling
+- **Animation Performance**: Framer Motion optimizations
+- **Bundle Analysis**: Available via Vite bundle analyzer
+
+## Security & Privacy
+- **Data Privacy**: User location handling considerations
+- **Content Moderation**: Community-generated content oversight
+- **API Security**: Rate limiting and authentication planning
+
+## Deployment & Infrastructure (Future)
+- **Static Hosting**: Vercel/Netlify compatible
+- **API Backend**: Node.js/Python backend planning
+- **Database**: PostgreSQL with spatial extensions for geo data
+- **CDN**: Asset delivery optimization
+
+---
+
+This context file should be referenced for all future development work. Update it as the project evolves, especially when adding new features, dependencies, or architectural changes.
